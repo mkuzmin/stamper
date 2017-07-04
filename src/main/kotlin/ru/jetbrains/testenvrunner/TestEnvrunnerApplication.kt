@@ -1,11 +1,11 @@
-package ru.jetbrains.testenvrunner
+package ru.jetbrains
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class TestenvrunnerApplication
+class TestEnvrunnerApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(TestenvrunnerApplication::class.java, *args)
+    SpringApplication.run(TestEnvrunnerApplication::class.java, *args)
 }

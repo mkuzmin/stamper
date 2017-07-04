@@ -1,4 +1,4 @@
-package ru.jetbrains.testenvrunner
+package ru.jetbrains
 
 import org.junit.Test
 import org.junit.runner.RunWith
