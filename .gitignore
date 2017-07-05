@@ -15,6 +15,9 @@ target/
 *.iml
 *.ipr
 
+*.tfplan
+*.tfstate*
+
 ### NetBeans ###
 nbproject/private/
 build/
