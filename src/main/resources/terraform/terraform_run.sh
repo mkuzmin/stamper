@@ -9,5 +9,5 @@ if [ -z "$MY_PATH" ]; then
     exit 1 # fail
 fi
 cd ${MY_PATH}
-terraform plan -out  -no-color hello-world-config.tfplan
+terraform plan -out  -no-color $1
 terraform apply  -no-color

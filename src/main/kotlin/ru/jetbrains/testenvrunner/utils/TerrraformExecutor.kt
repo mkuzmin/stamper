@@ -11,6 +11,7 @@ class TerrraformExecutor {
     private val terraformRunScript: String = "echo script is not available"
 
     fun executeTerraformScript(): ExecutionResult {
-        return BashExecutor.executeCommand(ExecutionCommand(terraformRunScript))
+        val param = "hello-world-config.tfplan"
+        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript $param"))
     }
 }
