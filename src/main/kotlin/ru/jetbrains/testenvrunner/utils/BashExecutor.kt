@@ -14,7 +14,7 @@ class BashExecutor {
         val MSG_TIMEOUT_ERROR_BASH = "Execution time of Bash command \"%s\" exceeded the waiting time. "
         val MSG_ERROR_BASH = "Unexpected error during bash script execution. "
         val SUCCESS_BASH = "Bash script has been executed."
-        val DEFAULT_WAITING_TIME: Long = 2
+        val DEFAULT_WAITING_TIME: Long = 50
 
         /**
          * Running bash script

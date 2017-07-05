@@ -22,4 +22,12 @@ class IndexController {
         model.addAttribute("result", result)
         return "result"
     }
+
+    @RequestMapping("/result_terraform", method = arrayOf(RequestMethod.POST))
+    fun doExecResultTerraformPost(model: Model): String {
+        val runTerraformCommand = ExecutionCommand("./src/main/resources/terraform/terraform_run.sh")
+        val result = BashExecutor.executeCommand(runTerraformCommand)
+        model.addAttribute("result", result)
+        return "result"
+    }
 }

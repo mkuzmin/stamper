@@ -42,6 +42,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <br/>
+            <form method="POST" role="form" th:action="@{/result_terraform}">
+                <div class="form-group">
+                    <label for="executeTerraformBtn">Run hello-terraform command</label>
+                </div>
+                <button id="executeTerraformBtn" type="submit" class="btn btn-primary">run hello terraform</button>
+            </form>
         </div>
     </div>
 </div>
