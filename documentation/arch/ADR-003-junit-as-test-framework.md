@@ -1,6 +1,6 @@
-# 1. Junit as test framework
+# 1. JUnit as test framework
 
-Date: 30/06/2017
+Date: 2017-06-30
 
 ## Status
 
@@ -8,8 +8,8 @@ Accepted
 
 ## Context
 
-We need to choose test framework
+We need to choose test framework.
 
 ## Decision
 
-We use Junit because it is standard framework for Java and it is enough to start.
+We use JUnit because it is a standard framework for JVM, and we don't have any advanced requirements yet.

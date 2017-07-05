@@ -1,6 +1,6 @@
-# 1. Bootsptrap as front-end framework
+# 1. Bootstrap as frontend framework
 
-Date: 30/06/2017
+Date: 2017-06-30
 
 ## Status
 
@@ -8,8 +8,8 @@ Accepted
 
 ## Context
 
-We need to choose frontend framework
+We need to choose a frontend framework.
 
 ## Decision
 
-We use bootstrap because it is the most popular framework and has a lot of documentation.
+We don't have any specific requirements yet, so use Bootstrap because it is the most popular framework, and has a lot of documentation.
