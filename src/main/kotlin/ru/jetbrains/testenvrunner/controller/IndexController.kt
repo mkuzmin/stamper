@@ -6,10 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import ru.jetbrains.testenvrunner.model.ExecutionCommand
 import ru.jetbrains.testenvrunner.utils.BashExecutor
+import ru.jetbrains.testenvrunner.utils.TerrraformExecutor
+import javax.inject.Inject
 
 @Controller
 @RequestMapping("/")
 class IndexController {
+    @Inject
+    lateinit var terraformExecutor: TerrraformExecutor
+
     @RequestMapping(method = arrayOf(RequestMethod.GET))
     fun doIndexGet(model: Model): String {
         model.addAttribute("command", ExecutionCommand())
@@ -25,8 +30,7 @@ class IndexController {
 
     @RequestMapping("/result_terraform", method = arrayOf(RequestMethod.POST))
     fun doExecResultTerraformPost(model: Model): String {
-        val runTerraformCommand = ExecutionCommand("./src/main/resources/terraform/terraform_run.sh")
-        val result = BashExecutor.executeCommand(runTerraformCommand)
+        val result = terraformExecutor.executeTerraformScript()
         model.addAttribute("result", result)
         return "result"
     }
