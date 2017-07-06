@@ -6,8 +6,4 @@ resource "docker_image" "ubuntu" {
 resource "docker_container" "ubuntu" {
   name = "hello-server"
   image = "${docker_image.ubuntu.latest}"
-  ports {
-    internal = 4000
-    external = 4001
-  }
 }

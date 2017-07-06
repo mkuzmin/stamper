@@ -11,6 +11,10 @@ class TerrraformExecutor {
     @Value("\${script.terraform}")
     private lateinit var terraformRunScript: String
 
+    /**
+     * Plan and apply terraform script
+     * @param script scrpit that will be runned
+     */
     fun executeTerraformScript(script: File): ExecutionResult {
         return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript $script"))
     }
