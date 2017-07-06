@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import ru.jetbrains.testenvrunner.model.ExecutionCommand
 import ru.jetbrains.testenvrunner.model.ExecutionResult
+import java.io.File
 
 @Component
 class TerrraformExecutor {
     @Value("\${script.terraform}")
-    private val terraformRunScript: String = "echo script is not available"
+    private lateinit var terraformRunScript: String
 
-    fun executeTerraformScript(): ExecutionResult {
-        val param = "hello-world-config.tfplan"
-        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript $param"))
+    fun executeTerraformScript(script: File): ExecutionResult {
+        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript $script"))
     }
 }
