@@ -16,6 +16,6 @@ class TerrraformExecutor {
      * @param script scrpit that will be runned
      */
     fun executeTerraformScript(script: File): ExecutionResult {
-        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript $script"))
+        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript ${script.absolutePath}"))
     }
 }

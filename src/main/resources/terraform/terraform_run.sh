@@ -8,6 +8,7 @@ if [ -z "$MY_PATH" ]; then
     echo ERROR: Path to terraform_run script cannot been resolved
     exit 1 # fail
 fi
-cd ${MY_PATH}
-terraform plan -out  -no-color $1
-terraform apply  -no-color
+#cd ${MY_PATH}
+cd $1
+terraform plan -no-color $1
+terraform apply -no-color
