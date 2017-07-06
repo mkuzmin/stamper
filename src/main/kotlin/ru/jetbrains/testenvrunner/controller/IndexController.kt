@@ -31,7 +31,7 @@ class IndexController {
 
     @RequestMapping("/result_terraform", method = arrayOf(RequestMethod.POST))
     fun doExecResultTerraformPost(model: Model): String {
-        val result = terraformExecutor.executeTerraformScript(File("hello-world-config.tfplan"))
+        val result = terraformExecutor.executeTerraformScript(File("./src/test/resources/terraform/hello-config/"))
         model.addAttribute("result", result)
         return "result"
     }
