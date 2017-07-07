@@ -2,6 +2,7 @@ package ru.jetbrains.testenvrunner.utils
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
+import ru.jetbrains.testenvrunner.constants.SystemConstants
 import ru.jetbrains.testenvrunner.model.ExecutionCommand
 import ru.jetbrains.testenvrunner.model.ExecutionResult
 import java.io.File
@@ -16,6 +17,6 @@ class TerrraformExecutor {
      * @param script scrpit that will be runned
      */
     fun executeTerraformScript(script: File): ExecutionResult {
-        return BashExecutor.executeCommand(ExecutionCommand("$terraformRunScript ${script.absolutePath}"))
+        return BashExecutor.executeCommand(ExecutionCommand("${SystemConstants.TERRAFORM_RUNNER} ${script.absolutePath}"))
     }
 }

@@ -22,13 +22,6 @@ class IndexController {
         return "index"
     }
 
-    @RequestMapping("/result", method = arrayOf(RequestMethod.POST))
-    fun doExecResultPost(command: ExecutionCommand, model: Model): String {
-        val result = BashExecutor.executeCommand(command)
-        model.addAttribute("result", result)
-        return "result"
-    }
-
     @RequestMapping("/result_terraform", method = arrayOf(RequestMethod.POST))
     fun doExecResultTerraformPost(model: Model): String {
         val result = terraformExecutor.executeTerraformScript(File("hello-world-config.tfplan"))
