@@ -23,10 +23,10 @@ apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'test-env-runner'
-    version = '0.1.0'
+    version = 'develop'
 }
 
-version = '0.0.1-SNAPSHOT'
+version = 'develop'
 sourceCompatibility = 1.8
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
