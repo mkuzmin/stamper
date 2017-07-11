@@ -48,6 +48,11 @@ task buildDocker(type: Docker, dependsOn: build) {
             from jar
             into stageDir
         }
+        copy {
+            from '.'
+            include 'data/system/**'
+            into stageDir
+        }
     }
 }
 
