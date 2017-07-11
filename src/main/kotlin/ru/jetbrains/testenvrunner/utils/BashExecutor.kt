@@ -17,6 +17,7 @@ class BashExecutor {
     val SUCCESS_BASH = "Bash script has been executed."
     val DEFAULT_WAITING_TIME: Long = 360
 
+
     /**
      * Running bash script
      * @param command - a command that will be executed
