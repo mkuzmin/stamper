@@ -20,3 +20,7 @@ resource "docker_container" "mysql" {
     "MYSQL_PASSWORD=mysql",
     "MYSQL_DATABASE=sushe"]
 }
+
+output "link" {
+  value = "http://google.ru"
+}

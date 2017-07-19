@@ -2,6 +2,7 @@ package ru.jetbrains.testenvrunner.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import ru.jetbrains.testenvrunner.repository.ScriptRepository
@@ -36,6 +37,14 @@ class IndexController constructor(val terraformExecutor: TerraformExecutor, val 
         val terraformScript = scriptRepository.get(scriptName)
         model.addAttribute("script", terraformScript)
         return "run_param"
+    }
+
+    @RequestMapping(value = "/script/{id}", method = arrayOf(RequestMethod.GET))
+    fun openRunningScriptForm(model: Model, @PathVariable(value = "id") scriptName: String, req: HttpServletRequest): String {
+        val terraformScript = scriptRepository.get(scriptName)
+        model.addAttribute("script", terraformScript)
+        model.addAttribute("link", terraformExecutor.getLink(terraformScript))
+        return "running_script"
     }
 
     @RequestMapping(value = "/result_terraform", method = arrayOf(RequestMethod.POST), params = arrayOf("action=destroy", "script-name"))

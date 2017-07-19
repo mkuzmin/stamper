@@ -47,12 +47,14 @@
                 <!--/*@thymesVar id="runscripts" type="java.util.List<ru.jetbrains.testenvrunner.model.TerraformScript>"*/-->
                 <li th:each="script : ${runscripts}" class="list-group-item">
                     <form method="POST" role="form" th:action="@{/result_terraform}">
-                        <span th:href="@{/script/}" th:text="${script.name}">Terraform script</span>
-                        <button type="submit" name="script-name" th:value="${script.name}"
-                                class="btn btn-xs btn-info btn-danger pull-right">
-                            Destroy
-                        </button>
-                        <input type="hidden" name="action" value="destroy"/>
+                        <th:block th:with="name=${script.name}">
+                            <a th:href="@{/script/{id}(id=${name})}" th:text="${name}">Running terraform script</a>
+                            <button type="submit" name="script-name" th:value="${script.name}"
+                                    class="btn btn-xs btn-info btn-danger pull-right">
+                                Destroy
+                            </button>
+                            <input type="hidden" name="action" value="destroy"/>
+                        </th:block>
                     </form>
                 </li>
             </ul>

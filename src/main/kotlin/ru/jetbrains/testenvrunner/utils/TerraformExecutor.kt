@@ -1,5 +1,7 @@
 package ru.jetbrains.testenvrunner.utils
 
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
 import org.springframework.stereotype.Service
 import ru.jetbrains.testenvrunner.model.ExecutionCommand
 import ru.jetbrains.testenvrunner.model.ExecutionResult
@@ -29,8 +31,17 @@ class TerraformExecutor constructor(val bashExecutor: BashExecutor) {
      * @return is run or no
      */
     fun isScriptRun(script: TerraformScript): Boolean {
-        val result = bashExecutor.executeCommand(ExecutionCommand("terraform show -no-color"), directory = script.absolutePath)
-        if (result.exitValue != 0) throw Exception("error during check of script state")
-        return result.output != "\n"
+        val result = bashExecutor.executeCommand(ExecutionCommand("terraform state list"), directory = script.absolutePath)
+        val msg: String = "No state file was found"
+        if (result.exitValue != 0 && !result.output.contains(msg)) throw Exception("error during check of script state\n ${result.output}")
+        return !result.output.isEmpty() && !result.output.contains(msg)
+    }
+
+    fun getLink(script: TerraformScript): String {
+        val result = bashExecutor.executeCommand(ExecutionCommand("terraform output -no-color -json"), directory = script.absolutePath)
+        if (result.exitValue != 0) return ""
+        val parser: Parser = Parser()
+        val json: JsonObject = parser.parse(StringBuilder(result.output)) as JsonObject
+        return ((json["link"] as JsonObject)["value"] as String?) ?: ""
     }
 }
