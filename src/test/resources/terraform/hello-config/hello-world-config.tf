@@ -8,3 +8,7 @@ resource "docker_container" "nginx" {
   name = "nginx-test"
   image = "${docker_image.nginx.latest}"
 }
+
+output "link" {
+  value = "http://google.ru"
+}

@@ -29,6 +29,8 @@ class TerraformExecutorTest : Assert() {
         assertTrue("The terraform script run fail. Exit code: ${resultRun.exitValue}", resultRun.exitValue == 0)
         //check that script state is run
         assertTrue("The terraform script state fail. Script is stopped", terraformExecurtor.isScriptRun(script))
+
+        assertEquals("The link is not the same", "http://google.ru", terraformExecurtor.getLink(script))
         //check stop
         val resultDestroy = terraformExecurtor.destroyTerraformScript(script)
         assertTrue("The terraform script destroy fail. Exit code: ${resultDestroy.exitValue}", resultDestroy.exitValue == 0)
